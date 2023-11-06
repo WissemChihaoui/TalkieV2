@@ -4,7 +4,9 @@ import Home from '../../../icons/Outline/home.svg'
 import Chat from '../../../icons/Outline/chat-alt-2.svg'
 import Match from '../../../icons/Outline/fire.svg'
 import Users from '../../../icons/Outline/users.svg'
+import User from '../../../icons/Outline/user.svg'
 import Bell from '../../../icons/Outline/bell.svg'
+import Logout from '../../../icons/Outline/logout.svg'
 
 import Logo from "../../../media/logo.png";
 import Profile from "../../../media/eminem.jpg";
@@ -68,7 +70,30 @@ const NavBar = () => {
 
           </PopoverContent>
         </Popover>
-          <img src={Profile} className="rounded-full w-10" />
+        <Popover placement="bottom-end">
+          <PopoverHandler>
+            <img src={Profile} className="rounded-full w-10 cursor-pointer" />
+          </PopoverHandler>
+          <PopoverContent className="bg-hover flex flex-col gap-4 max-w-[300px] text-primary max-h-[600px] overflow-y-scroll border-none">
+            <Link to={'/profile'} className='flex gap-4 items-center text-[16px]'>
+              <img src={User} className="w-5"/>
+              <span>Profile</span>
+            </Link>
+            <Link to={'/profile'} className='flex gap-4 items-center text-[16px]'>
+              <img src={User} className="w-5"/>
+              <span>Edit Profile</span>
+            </Link>
+            <Link to={'/profile'} className='flex gap-4 items-center text-[16px]'>
+              <img src={User} className="w-5"/>
+              <span>Settings</span>
+            </Link>
+            <Link to={'#'} className='flex gap-4 items-center text-[16px]'>
+              <img src={Logout} className="w-5"/>
+              <span>Logout</span>
+            </Link>
+          </PopoverContent>
+        </Popover>
+          
         </div>
       </div>
     </div>
