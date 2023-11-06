@@ -4,7 +4,7 @@ import NavBarHome from '../../comp/NavBar/NavBarHome/NavBarHome'
 const Home = () => {
   return (
     <div>
-        <NavBarHome />
+        {/* <NavBarHome /> */}
         <NavBar />
     </div>
   )
