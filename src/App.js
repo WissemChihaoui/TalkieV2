@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react';
+import './index.css'
+import AuthLayout from './pages/auth/layout'
+import { BrowserRouter as Router, Route, Redirect  } from 'react-router-dom';
+import Home from './pages/home/Home';
+const AuthRedirect = () => {
+  return <Redirect to="/auth/login" />;
+};
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Route path="/auth/" component={AuthLayout} />
+      <Route exact path="/auth" component={AuthRedirect} />
+      <Route exact path="/" component={Home} />
+    </Router>
   );
-}
+};
 
 export default App;
