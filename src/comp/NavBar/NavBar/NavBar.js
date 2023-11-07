@@ -23,7 +23,7 @@ const NavBar = () => {
    const path = window.location.pathname
 
   return (
-    <div className="m-0 bg-card w-full fixed z-10">
+    <div className="m-0 bg-card w-full fixed z-[100]">
       <div className="flex px-12 py-4 justify-between text-primary items-center">
         <div className="w-8">
           <img src={Logo} />
@@ -50,7 +50,7 @@ const NavBar = () => {
           <PopoverHandler>
             <img src={Bell} className="cursor-pointer"/>
           </PopoverHandler>
-          <PopoverContent className="bg-hover z-20 flex flex-col gap-2 max-w-[300px] text-primary max-h-[600px] overflow-y-scroll border-none">
+          <PopoverContent className="bg-hover z-[200] flex flex-col gap-2 max-w-[300px] text-primary max-h-[600px] overflow-y-scroll border-none">
             
             
               <span className="border-b-blue-gray-100 border-b-[1px] pb-1">This is a very beautiful popover, show some love.</span>
@@ -76,7 +76,7 @@ const NavBar = () => {
           <PopoverHandler>
             <img src={Profile} className="rounded-full w-10 cursor-pointer" />
           </PopoverHandler>
-          <PopoverContent className="bg-hover z-20 flex flex-col gap-4 max-w-[300px] text-primary max-h-[600px] overflow-y-scroll border-none">
+          <PopoverContent className="bg-hover z-[200] flex flex-col gap-4 max-w-[300px] text-primary max-h-[600px] overflow-y-scroll border-none">
             <Link to={'/profile'} className='flex gap-4 items-center text-[16px]'>
               <img src={User} className="w-5"/>
               <span>Profile</span>

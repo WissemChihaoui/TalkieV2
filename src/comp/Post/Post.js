@@ -28,7 +28,7 @@ const Post = () => {
   const toggleOpen = () => setOpen((cur) => !cur);
   return (
     <div>
-      <div className="bg-card p-8 rounded-lg shadow-md max-w-lg">
+      <div className="bg-card p-8 rounded-lg shadow-md w-full">
       
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-2">
