@@ -7,12 +7,19 @@ import {
   MenuList,
   MenuItem,
   Input,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+  Typography,
 } from "@material-tailwind/react";
 
 import Photograph from "../../../icons/Solid/photograph.svg";
 import Hashtag from "../../../icons/Solid/hashtag.svg";
-import {topicsHashtag} from '../../../lib/hashtag.js'
+import XMark from '../../../icons/Outline/x.svg'
 
+import { topicsHashtag } from "../../../lib/hashtag.js";
+import DragDropImage from "../DragDropImage/DragDropImage";
 
 const PostField = () => {
   const [textareaContent, setTextareaContent] = useState("");
@@ -30,6 +37,17 @@ const PostField = () => {
     setSearchValue(inputValue);
     setFilteredItems(filtered);
   };
+  const [openPickImage, setOpenPickImage] = useState(false);
+
+  const handleOpenPickImage = () => setOpenPickImage(!openPickImage);
+
+  const [selectedImages, setSelectedImages] = useState([]);
+
+  const handleRemoveImage = (indexToRemove) => {
+    setSelectedImages((prevImages) =>
+      prevImages.filter((_, index) => index !== indexToRemove)
+    );
+  };
 
   return (
     <div className="bg-card p-4 rounded-lg shadow-md w-full flex flex-col gap-4">
@@ -44,9 +62,39 @@ const PostField = () => {
       ></textarea>
       <div className="flex justify-between">
         <div className="flex  gap-4">
-          <Button className="p-3 bg-transparent">
+          <Button className="p-3 bg-transparent" onClick={handleOpenPickImage}>
             <img src={Photograph} />
           </Button>
+
+          <Dialog open={openPickImage} handler={handleOpenPickImage} className='bg-bg'>
+            <DialogHeader>
+              <Typography variant="h5" className="text-primary">
+                Pick images for your post
+              </Typography>
+            </DialogHeader>
+            <DialogBody divider className="grid place-items-center gap-4">
+              <DragDropImage onImagesChange={setSelectedImages}/>
+              <div className="w-full">
+              <Typography color="white" variant="p">
+                Your Picks
+              </Typography>
+              <div className="flex gap-1">
+              {selectedImages.map((image, index) => (
+                <div className="relative">
+                  <img src={XMark} className="absolute right-0 bg-hover rounded-full cursor-pointer" onClick={() => handleRemoveImage(index)}/>
+                  <img key={index} src={image} alt={`Selected Image ${index}`} className="mb-2 rounded-lg w-full h-14 object-cover" style={{ maxWidth: '100%', maxHeight: '100%' }} />
+              </div>
+            ))}
+              </div>
+              </div>
+            </DialogBody>
+            <DialogFooter className="space-x-2">
+              <Button variant="gradient" onClick={handleOpenPickImage} color="blue">
+                Submit
+              </Button>
+            </DialogFooter>
+          </Dialog>
+
           <Menu
             dismiss={{
               itemPress: false,
