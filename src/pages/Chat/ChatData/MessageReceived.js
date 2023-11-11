@@ -1,7 +1,8 @@
 import React from "react";
 import { Avatar } from "@material-tailwind/react";
-const MessageReceived = () => {
+const MessageReceived = ({content}) => {
   return (
+    <div class="col-start-6 col-end-13 p-1 rounded-lg">
     <div class="flex items-center justify-start flex-row-reverse">
       <Avatar
         size="sm"
@@ -10,8 +11,11 @@ const MessageReceived = () => {
         alt="tania andrew"
       />
       <div class="relative mr-3 text-sm bg-blue-800 text-primary py-2 px-4 shadow rounded-xl">
-        <div>I'm ok what about you?</div>
+        <div>
+            {content}
+        </div>
       </div>
+    </div>
     </div>
   );
 };

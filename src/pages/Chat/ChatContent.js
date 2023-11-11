@@ -1,5 +1,6 @@
+import React, { useState, useEffect, useRef  } from "react";
 import { Avatar } from "@material-tailwind/react";
-import React from "react";
+import chatLogData from "../../lib/ChatLogEx.json";
 import Phone from "../../icons/Solid/phone.svg";
 import User from "../../icons/Solid/user.svg";
 import DotsVertical from "../../icons/Solid/dots-vertical.svg";
@@ -9,7 +10,17 @@ import Microphone from "../../icons/Solid/microphone.svg";
 import { Link } from "react-router-dom";
 import MessageSent from "./ChatData/MessageSent";
 import MessageReceived from "./ChatData/MessageReceived";
+
 const ChatContent = () => {
+  const [chatMessages, setChatMessages] = useState([]);
+  const chatContainerRef = useRef();
+  useEffect(() => {
+    setChatMessages(chatLogData);
+  }, []);
+  useEffect(() => {
+    chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+  }, [chatMessages]);
+
   return (
     <React.Fragment>
       <div class="flex flex-col h-full w-full bg-transparent px-4 py-6">
@@ -55,17 +66,18 @@ const ChatContent = () => {
             </ul>
           </div>
         </div>
-        <div class="h-full overflow-hidden py-4">
+        <div class="h-full overflow-hidden py-4" ref={chatContainerRef}>
           <div class="h-full overflow-y-auto">
-            <div class="grid grid-cols-12 gap-y-2">
-              
-              <div class="col-start-1 col-end-8 p-3 rounded-lg">
-                <MessageSent />
-              </div>
-              
-              <div class="col-start-6 col-end-13 p-3 rounded-lg">
-                <MessageReceived />
-              </div>
+            <div class="grid grid-cols-12 ">
+            {chatMessages.map((message, index) => (
+  <React.Fragment key={index}>
+    {message.sender === 'user' ? (
+      <MessageSent content={message.text} />
+    ) : (
+      <MessageReceived content={message.text} />
+    )}
+  </React.Fragment>
+))}
             </div>
           </div>
         </div>

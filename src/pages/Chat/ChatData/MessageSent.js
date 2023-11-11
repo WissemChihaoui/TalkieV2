@@ -1,7 +1,8 @@
 import React from "react";
 import { Avatar } from "@material-tailwind/react";
-const MessageSent = () => {
+const MessageSent = ({content}) => {
   return (
+    <div class="col-start-1 col-end-8 p-1 rounded-lg">
     <div class="col-start-1 col-end-8 p-3 rounded-lg">
       <div class="flex flex-row items-center">
         <Avatar
@@ -12,12 +13,11 @@ const MessageSent = () => {
         />
         <div class="relative ml-3 text-sm bg-card text-primary py-2 px-4 shadow rounded-xl">
           <div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ipsa
-            commodi illum saepe numquam maxime asperiores voluptate sit, minima
-            perspiciatis.
+            {content}
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -1,0 +1,13 @@
+[
+    { "sender": "other_person", "text": "Hi there! How are you?" },
+    { "sender": "user", "text": "I'm good, thanks. How about you?" },
+    { "sender": "other_person", "text": "I'm doing well too. Anything exciting happening?" },
+    { "sender": "user", "text": "Not much, just working on a project. How about you?" },
+    { "sender": "other_person", "text": "Same here, busy with work. Do you have any plans for the weekend?" },
+    { "sender": "user", "text": "Not yet. Maybe just relaxing at home. You?" },
+    { "sender": "user", "text": "Actually, I might go for a hike if the weather is good." },
+    { "sender": "other_person", "text": "That sounds like a great plan. Hiking is always refreshing!" },
+    { "sender": "user", "text": "Definitely! I love being outdoors. It clears the mind." },
+    { "sender": "other_person", "text": "Absolutely. Nature has a way of bringing peace. Enjoy your hike!" }
+  ]
+  
