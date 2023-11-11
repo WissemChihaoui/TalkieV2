@@ -28,6 +28,7 @@ const ImageView = ({
         link.click();
       });
   };
+  
   return (
     <React.Fragment>
       <DialogHeader className="justify-between bg-card">

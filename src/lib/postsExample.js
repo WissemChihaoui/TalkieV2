@@ -5,7 +5,7 @@ const posts = [
       avatar: "https://placekitten.com/40/40",
       postedTime: "2 hours ago",
       content:
-        "Just another day with adorable kittens! 🐱 #CuteKitten #AdventureCat",
+        "Just another day with adorable kittens! 🐱 #HasthagExample #Hasthage2 #AdventureCat",
       imageUrl: "https://placekitten.com/400/300",
       likes: 42,
       comments: [
