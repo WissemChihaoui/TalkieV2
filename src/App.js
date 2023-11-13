@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Redirect  } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Chat from './pages/Chat/Chat';
 import Loading from './Loading';
+import AudioRecorder from './pages/RecordAudio';
 const AuthRedirect = () => {
   return <Redirect to="/auth/login" />;
 };
@@ -32,6 +33,7 @@ const App = () => {
         <Route exact path="/auth" component={AuthRedirect} />
         <Route exact path="/" component={Home} />
         <Route exact path="/messages" component={Chat} />
+        <Route exact path="/audio" component={AudioRecorder} />
       </Router>
     )}
     </React.Fragment>

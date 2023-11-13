@@ -24,3 +24,8 @@ body::-webkit-scrollbar{
 body{
     background: #18191A;
 }
+audio{
+  background: none;
+  outline: none;
+  border: none;
+}
