@@ -19,6 +19,9 @@ import ImageView from "../ImageView/ImageView";
 
 import { formatHashtags } from "../../lib/hashtagUtils";
 
+// import comment input
+import Comment from "../InputFields/Comment/Comment";
+
 const Post = ({
   username,
   avatar,
@@ -137,6 +140,7 @@ const Post = ({
       </div>
       <Collapse open={open}>
         <hr className="mt-2 mb-2" />
+        <Comment/>
         <p className="text-secondary font-semibold">Comment</p>
         <hr className="mt-2 mb-2" />
         <div className="mt-4">
