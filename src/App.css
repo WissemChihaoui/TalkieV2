@@ -1,6 +1,71 @@
 .App {
   text-align: center;
 }
+/* Custom Audio Player Styles */
+
+/* Audio Player Container */
+.custom-audio-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Audio Player */
+.custom-audio {
+  width: 100%;
+}
+
+/* Audio Controls */
+.custom-audio-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+/* Play/Pause Button */
+.custom-audio-controls button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin: 0 10px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.custom-audio-controls button:hover {
+  background-color: #2980b9;
+}
+
+/* Progress Bar */
+.custom-audio-progress {
+  width: 100%;
+  height: 5px;
+  background-color: #ddd;
+  border-radius: 3px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.custom-audio-progress-filled {
+  height: 100%;
+  border-radius: 3px;
+  background-color: #3498db;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
 .App-logo {
   height: 40vmin;

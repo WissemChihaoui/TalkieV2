@@ -45,43 +45,42 @@ const ChatContent = () => {
   //AUDIO RECORD
 
   const mimeType = "audio/webm";
-  const [permission, setPermission] = useState(false);
-  const mediaRecorder = useRef(null);
-  const [recordingStatus, setRecordingStatus] = useState("inactive");
-  const [stream, setStream] = useState(null);
-  const [audioChunks, setAudioChunks] = useState([]);
-  const [audio, setAudio] = useState(null);
-  const getMicrophonePermission = async () => {
-    if ("MediaRecorder" in window) {
-      try {
-        const streamData = await navigator.mediaDevices.getUserMedia({
-          audio: true,
-        });
-        setPermission(true);
-        setStream(streamData);
-      } catch (err) {
-        alert(err.message);
-      }
-    } else {
-      alert("The MediaRecorder API is not supported in your browser.");
+const [permission, setPermission] = useState(false);
+const mediaRecorder = useRef(null);
+const [recordingStatus, setRecordingStatus] = useState("inactive");
+const [stream, setStream] = useState(null);
+const [audioChunks, setAudioChunks] = useState([]);
+const [audio, setAudio] = useState(null);
+  
+const startRecording = async () => {
+  if ("MediaRecorder" in window) {
+    try {
+      const streamData = await navigator.mediaDevices.getUserMedia({
+        audio: true,
+      });
+      setPermission(true);
+      setStream(streamData);
+      setRecordingStatus("recording");
+
+      const media = new MediaRecorder(streamData, { type: mimeType });
+      mediaRecorder.current = media;
+
+      let localAudioChunks = [];
+      mediaRecorder.current.ondataavailable = (event) => {
+        if (typeof event.data === "undefined") return;
+        if (event.data.size === 0) return;
+        localAudioChunks.push(event.data);
+      };
+
+      mediaRecorder.current.start();
+      setAudioChunks(localAudioChunks);
+    } catch (err) {
+      alert(err.message);
     }
-  };
-  const startRecording = async () => {
-    setRecordingStatus("recording");
-    //create new Media recorder instance using the stream
-    const media = new MediaRecorder(stream, { type: mimeType });
-    //set the MediaRecorder instance to the mediaRecorder ref
-    mediaRecorder.current = media;
-    //invokes the start method to start the recording process
-    mediaRecorder.current.start();
-    let localAudioChunks = [];
-    mediaRecorder.current.ondataavailable = (event) => {
-      if (typeof event.data === "undefined") return;
-      if (event.data.size === 0) return;
-      localAudioChunks.push(event.data);
-    };
-    setAudioChunks(localAudioChunks);
-  };
+  } else {
+    alert("The MediaRecorder API is not supported in your browser.");
+  }
+};
   const stopRecording = () => {
     setRecordingStatus("inactive");
     //stops the recording instance
@@ -116,20 +115,20 @@ const ChatContent = () => {
         </div>
         {audio ? (
           //This is just example.. the audio will be sent as message directly
-          <div >
-            <audio src={audio} controls className="bg-card rounded-md m-2"></audio>
-            {/* <a download href={audio}>
-              Download Recording
-            </a> */}
-          </div>
+          <div className="custom-audio-container">
+  <audio src={audio} controls className="custom-audio"></audio>
+  <div className="custom-audio-controls">
+    <button>Play</button>
+    <div className="custom-audio-progress">
+      <div className="custom-audio-progress-filled"></div>
+    </div>
+    <button>Pause</button>
+  </div>
+</div>
         ) : null}
         <div class="flex flex-row items-center">
           <div class="flex flex-row items-center w-full border rounded-3xl h-12 px-2">
-            {!permission ? (
-              <button onClick={getMicrophonePermission} type="button" class="flex items-center justify-center h-10 w-10 text-gray-400 ml-1">
-                <img src={Microphone} />
-              </button>
-            ) : permission && recordingStatus === "inactive" ? (
+            { recordingStatus === "inactive" ? (
               <button
                 onClick={startRecording}
                 class="flex items-center justify-center h-10 w-10 text-gray-400 ml-1"
