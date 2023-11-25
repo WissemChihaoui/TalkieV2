@@ -1,5 +1,6 @@
 import React from "react";
 import FriendsList from "../../comp/HomeComp/FriendsList/FriendsList";
+import PopularHasthags from "../../comp/HomeComp/PopularHasthags/PopularHasthags";
 import PostField from "../../comp/InputFields/PostField/PostField";
 import NavBar from "../../comp/NavBar/NavBar/NavBar";
 import NavBarHome from "../../comp/NavBar/NavBarHome/NavBarHome";
@@ -15,8 +16,9 @@ const Home = () => {
       <div className="py-4 relative top-[77px]">
         <div className="grid grid-cols-4 mx-0">
           <div className="text-primary">
-            <div className="fixed w-[20%]">
+            <div className="fixed flex flex-col gap-1 w-[20%]">
               <Updates />
+              <PopularHasthags />
             </div>
             
           </div>
