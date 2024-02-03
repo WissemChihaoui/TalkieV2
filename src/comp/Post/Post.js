@@ -47,7 +47,7 @@ const Post = ({
   const handleOpenImageView = () => setOpenImageView((cur) => !cur);
 
   return (
-    <div className="bg-card p-4 rounded-lg shadow-md w-full">
+    <div className="bg-card p-4 rounded-lg shadow-md w-full h-max">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
           <Popover

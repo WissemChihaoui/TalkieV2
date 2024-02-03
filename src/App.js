@@ -6,7 +6,7 @@ import Home from './pages/home/Home';
 import Chat from './pages/Chat/Chat';
 import Loading from './Loading';
 import AudioRecorder from './pages/RecordAudio';
-import profile from './pages/profile/profile';
+import Profile from './pages/profile/Profile';
 const AuthRedirect = () => {
   return <Redirect to="/auth/login" />;
 };
@@ -35,7 +35,8 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/messages" component={Chat} />
         <Route exact path="/audio" component={AudioRecorder} />
-        <Route exact path="/profile" component={profile} />
+        <Route exact path="/profile/*" component={Profile} />
+        <Route exact path="/profile" component={Profile} />
       </Router>
     )}
     </React.Fragment>

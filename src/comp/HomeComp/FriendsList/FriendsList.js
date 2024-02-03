@@ -15,7 +15,7 @@ const FriendsList = () => {
       </Link>
       </div>
       
-      <div className="flex flex-col gap-2 max-h-[400px] overflow-y-scroll overflow-hidden">
+      <div className="flex flex-col gap-2 max-h-[600px] overflow-y-scroll overflow-hidden">
         <FriendItem />
         <FriendItem />
         <FriendItem />

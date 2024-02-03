@@ -1,4 +1,4 @@
-import React from "react";
+import {React , useState} from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../../comp/NavBar/NavBar/NavBar";
 import ChatContent from "./ChatContent";
@@ -6,7 +6,9 @@ import { Avatar } from "@material-tailwind/react";
 
 import Plus from "../../icons/Outline/plus.svg";
 
+
 const Chat = () => {
+  const [showSearch, setShowSearch] = useState(false)
   return (
     <div>
       <NavBar />
@@ -24,7 +26,7 @@ const Chat = () => {
                 </div>
               </div>
               <div class="ml-auto">
-                <button class="flex items-center justify-center h-7 w-7 bg-hover text-gray-500 rounded-full">
+                <button class="flex items-center justify-center h-7 w-7 bg-hover text-gray-500 rounded-full" onClick={() => setShowSearch(!showSearch)}>
                   <svg
                     class="w-4 h-4 stroke-current"
                     fill="none"
@@ -41,6 +43,13 @@ const Chat = () => {
                   </svg>
                 </button>
               </div>
+            </div>
+            <div className={`w-full bg-hover px-1 mt-2 rounded-lg ${showSearch ? 'block' : 'hidden'}`}>
+            <input
+                type="text"
+                class="border border-transparent w-full focus:outline-none text-sm h-10 flex items-center bg-transparent py-1 text-primary"
+                placeholder="Search For Messages"
+              />
             </div>
             <div class="mt-5">
               <ul class="flex flex-row items-center justify-between">

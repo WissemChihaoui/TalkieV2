@@ -4,18 +4,17 @@ import { Link } from "react-router-dom";
 const hashtags = [
   "Travel",
   "Work",
-  "Bayern Munich",
+  "Bayern_Munich",
   "Sports",
-  "League of legends",
+  "League_of_legends",
   "e-sports",
-  "Tunisia",
   "Travel",
   "Work",
-  "Bayern Munich",
+  "Bayern_Munich",
   "Sports",
-  "League of legends",
+  "League_of_legends",
   "e-sports",
-  "Tunisia",
+  
 ];
 const getColorGradientClass = (index) => {
   const colors = [
@@ -45,11 +44,12 @@ const PopularHashtags = () => {
       <label className="text-primary text text-2xl font-semibold">
         Popular Hashtags
       </label>
-      <div className="flex flex-wrap pt-4 gap-y-2 justify-between">
+      <div className="grid grid-cols-2 gap-2 flex-wrap pt-4 gap-y-2 justify-between">
         {hashtags.map((hashtag, index) => (
-          <Link key={index} to={`/hashtag/${hashtag}`}>
-            <div className={`py-1 px-2 rounded-full ${getColorGradientClass(index)}`}>
-              {hashtag}
+          <Link key={index} to={`/hashtag/${hashtag}`} className={`${getColorGradientClass(index)} py-1 px-2 cursor-pointer  rounded-md hover:scale-105 transition duration-500`}>
+            <div className={`flex flex-col cursor-pointer`}>
+              <label className="font-bold cursor-pointer">{hashtag}</label>
+              <span className="text-left text-primary cursor-pointer text-xs">244 Posts</span>
             </div>
           </Link>
         ))}
